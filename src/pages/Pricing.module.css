@@ -1,0 +1,79 @@
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 36px;
+  position: relative;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.popular { border-color: var(--accent); background: linear-gradient(135deg, rgba(91,110,245,0.1), var(--surface)); }
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.popularBadge {
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--accent), var(--accent3));
+  color: #fff;
+  font-size: 0.75rem; font-weight: 700;
+  padding: 4px 18px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.name { font-size: 0.85rem; font-weight: 600; color: var(--text3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.price { font-family: var(--font-display); font-size: 2.4rem; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+.price span { font-size: 1rem; color: var(--text3); }
+.desc { font-size: 0.88rem; color: var(--text2); margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; flex: 1; }
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text2);
+}
+.features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+.no { color: var(--text3) !important; }
+.no::before { content: '✗' !important; color: var(--text3) !important; }
+.planBtn { width: 100%; justify-content: center; }
+
+/* TOOLTIP */
+.tipWrap { position: relative; cursor: help; display: inline-flex; align-items: center; gap: 4px; }
+.tipIcon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px;
+  background: rgba(91,110,245,0.2);
+  border-radius: 50%;
+  font-size: 0.65rem; color: var(--accent);
+  font-style: normal; font-weight: 700;
+}
+.tipBox {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  bottom: calc(100% + 8px);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 0.78rem; color: var(--text2);
+  white-space: nowrap;
+  z-index: 50;
+  box-shadow: var(--shadow2);
+  pointer-events: none;
+}
+
+.note {
+  margin-top: 40px;
+  text-align: center;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+}
+.note p { color: var(--text2); font-size: 0.95rem; margin-bottom: 16px; }
+.note strong { color: var(--text); }
+
+@media (max-width: 1024px) { .grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; } }
+@media (max-width: 768px) { .grid { max-width: 100%; } }

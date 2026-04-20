@@ -1,0 +1,29 @@
+.grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; margin-top: 56px; }
+.infoCol h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+.infoCol > p { color: var(--text2); font-size: 0.95rem; line-height: 1.75; margin-bottom: 28px; }
+.contactItems { display: flex; flex-direction: column; gap: 14px; }
+.contactItem {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: var(--transition);
+  color: inherit;
+}
+.contactItem:hover { border-color: rgba(91,110,245,0.3); }
+.ciIcon {
+  width: 44px; height: 44px;
+  background: rgba(91,110,245,0.12);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.ciLabel { font-size: 0.78rem; color: var(--text3); margin-bottom: 2px; }
+.ciVal { font-size: 0.92rem; font-weight: 600; color: var(--text); word-break: break-all; }
+.waBtn { width: 100%; justify-content: center; margin-top: 20px; }
+.socials { display: flex; gap: 10px; margin-top: 24px; }
+.formBox { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius2); padding: 40px; }
+.submitBtn { width: 100%; justify-content: center; }
+@media (max-width: 1024px) { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .formBox { padding: 24px; } }
