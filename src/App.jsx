@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import FloatingWhatsApp from '@/components/FloatingWhatsApp'
+import ScrollToTopButton from '@/components/ScrollToTopButton'
 import Home from '@/pages/Home'
 import About from '@/pages/About'
 import Projects from '@/pages/Projects'
@@ -11,6 +12,7 @@ import Quote from '@/pages/Quote'
 import Contact from '@/pages/Contact'
 import SeoServices from '@/pages/SeoServices'
 import Automation from '@/pages/Automation'
+import NotFound from '@/pages/NotFound'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -33,10 +35,13 @@ export default function App() {
           <Route path="/iletisim" element={<Contact />} />
           <Route path="/seo-hizmetleri" element={<SeoServices />} />
           <Route path="/otomasyon" element={<Automation />} />
+          {/* 404 - Tüm eşleşmeyen rotalar */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <ScrollToTopButton />
     </BrowserRouter>
   )
 }

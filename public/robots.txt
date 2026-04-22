@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://webxtasarim.com/sitemap.xml
+
+# Build dosyalarını engelle
+Disallow: /assets/
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Tüm sayfalara izin ver
+Allow: /$
+Allow: /hakkimizda
+Allow: /projeler
+Allow: /fiyatlar
+Allow: /teklif
+Allow: /iletisim
+Allow: /seo-hizmetleri
+Allow: /otomasyon
