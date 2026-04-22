@@ -2,6 +2,7 @@ import tashanImg from '@/assets/tashan.png'
 import sahapanelImg from '@/assets/sahapanel.png'
 import akcelikImg from '@/assets/akcelik.png'
 import mustafaImg from '@/assets/mustafa-portfolio.png'
+import webxImg from '@/assets/webx-portfolio.png'
 
 /* ─── İLETİŞİM ─── */
 export const WA_NUMBER = '905319621482'
@@ -56,9 +57,7 @@ export const projects = [
     tags: ['Portföy', 'React', 'Dark Theme'],
   },
   {
-    image: null,
-    emoji: '🌐',
-    gradient: 'linear-gradient(135deg,#1a1f4e,#2d3478)',
+    image: webxImg,
     title: 'WebX Tasarım – Portföy Sitesi',
     desc: 'Müşteri kazanım odaklı portföy ve kurumsal web sitemiz. Dinamik teklif formu, proje galerisi ve iletişim sistemi içeriyor.',
     url: 'https://webxtasarim.com',

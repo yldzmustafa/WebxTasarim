@@ -10,13 +10,12 @@ export default function ScrollToTopButton() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  const scrollUp = () => window.scrollTo({ top: 0, behavior: 'smooth' })
-
   return (
     <button
       className={`${styles.btn} ${visible ? styles.visible : ''}`}
-      onClick={scrollUp}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="Sayfanın başına dön"
+      title="Yukarı çık"
     >
       ↑
     </button>

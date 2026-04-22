@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useNavScroll } from '@/hooks/useScrollAnimation'
 import { waLink } from '@/data'
@@ -24,7 +24,17 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [dropOpen, setDropOpen] = useState(false)
   const { pathname } = useLocation()
+  const closeTimer = useRef(null)
   const close = () => setOpen(false)
+
+  // Dropdown kapanırken kısa gecikme — fareyi link üzerine taşımaya vakit tanır
+  const handleDropEnter = () => {
+    clearTimeout(closeTimer.current)
+    setDropOpen(true)
+  }
+  const handleDropLeave = () => {
+    closeTimer.current = setTimeout(() => setDropOpen(false), 120)
+  }
 
   return (
     <>
@@ -42,24 +52,27 @@ export default function Navbar() {
                   <div
                     key={i}
                     className={styles.dropWrap}
-                    onMouseEnter={() => setDropOpen(true)}
-                    onMouseLeave={() => setDropOpen(false)}
+                    onMouseEnter={handleDropEnter}
+                    onMouseLeave={handleDropLeave}
                   >
-                    <span className={styles.navLink}>{l.label}</span>
-                    {dropOpen && (
-                      <div className={styles.dropdown}>
-                        {l.dropdown.map(d => (
-                          <Link
-                            key={d.to}
-                            to={d.to}
-                            className={`${styles.dropItem} ${pathname === d.to ? styles.active : ''}`}
-                            onClick={() => setDropOpen(false)}
-                          >
-                            {d.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
+                    <span className={`${styles.navLink} ${dropOpen ? styles.dropActive : ''}`}>
+                      {l.label}
+                    </span>
+                    {/* Görünmez köprü — hover gap'i kapatır */}
+                    <div className={styles.dropBridge} />
+                    <div className={`${styles.dropdown} ${dropOpen ? styles.dropVisible : ''}`}>
+                      {l.dropdown.map(d => (
+                        <Link
+                          key={d.to}
+                          to={d.to}
+                          className={`${styles.dropItem} ${pathname === d.to ? styles.active : ''}`}
+                          onClick={() => setDropOpen(false)}
+                          onMouseEnter={handleDropEnter}
+                        >
+                          {d.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )
               }
