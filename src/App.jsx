@@ -9,6 +9,8 @@ import Projects from '@/pages/Projects'
 import Pricing from '@/pages/Pricing'
 import Quote from '@/pages/Quote'
 import Contact from '@/pages/Contact'
+import SeoServices from '@/pages/SeoServices'
+import Automation from '@/pages/Automation'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -29,6 +31,8 @@ export default function App() {
           <Route path="/fiyatlar" element={<Pricing />} />
           <Route path="/teklif" element={<Quote />} />
           <Route path="/iletisim" element={<Contact />} />
+          <Route path="/seo-hizmetleri" element={<SeoServices />} />
+          <Route path="/otomasyon" element={<Automation />} />
         </Routes>
       </main>
       <Footer />

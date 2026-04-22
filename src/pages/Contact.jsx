@@ -1,16 +1,30 @@
 import { useState } from 'react'
-import { PHONE_DISPLAY, EMAIL, waLink } from '@/data'
+import { PHONE_DISPLAY, EMAIL } from '@/data'
 import styles from './Contact.module.css'
+
+const TOPICS = ['Yeni Proje Talebi', 'Fiyat Bilgisi', 'Teknik Destek', 'SEO Danışmanlığı', 'Otomasyon Hizmetleri', 'İş Birliği', 'Diğer']
 
 export default function Contact() {
   const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [topic, setTopic] = useState(TOPICS[0])
   const [msg, setMsg] = useState('')
 
   const sendWA = () => {
-    let text = 'Merhaba WebX Tasarım,\n\n'
-    if (name) text += `Ad: ${name}\n\n`
-    text += msg || 'Proje hakkında bilgi almak istiyorum.'
-    window.open(`https://wa.me/905319621482?text=${encodeURIComponent(text)}`, '_blank')
+    if (!name.trim()) { alert('Lütfen adınızı giriniz.'); return }
+
+    const lines = [
+      '📩 *WebX Tasarım – İletişim Mesajı*',
+      '',
+      `👤 *Ad Soyad:* ${name}`,
+      phone ? `📞 *Telefon:* ${phone}` : '',
+      email ? `📧 *E-Posta:* ${email}` : '',
+      `📌 *Konu:* ${topic}`,
+      msg ? `\n💬 *Mesaj:*\n${msg}` : '',
+    ].filter(Boolean).join('\n')
+
+    window.open(`https://wa.me/905319621482?text=${encodeURIComponent(lines)}`, '_blank')
   }
 
   return (
@@ -43,7 +57,7 @@ export default function Contact() {
                     <div className={styles.ciVal}>{EMAIL}</div>
                   </div>
                 </a>
-                <a href={waLink()} target="_blank" rel="noreferrer" className={styles.contactItem}>
+                <a href={`https://wa.me/905319621482`} target="_blank" rel="noreferrer" className={styles.contactItem}>
                   <div className={styles.ciIcon}>📞</div>
                   <div>
                     <div className={styles.ciLabel}>Telefon / WhatsApp</div>
@@ -67,7 +81,7 @@ export default function Contact() {
               </div>
 
               <a
-                href={waLink('Merhaba, proje hakkında bilgi almak istiyorum.')}
+                href={`https://wa.me/905319621482?text=${encodeURIComponent('Merhaba, proje hakkında bilgi almak istiyorum.')}`}
                 target="_blank"
                 rel="noreferrer"
                 className={`btn btn-primary ${styles.waBtn}`}
@@ -86,26 +100,31 @@ export default function Contact() {
 
             {/* RIGHT FORM */}
             <div className={styles.formBox}>
-              <div className="form-group">
-                <label className="form-label">Adınız Soyadınız *</label>
-                <input className="form-input" type="text" placeholder="Ahmet Yılmaz" value={name} onChange={e => setName(e.target.value)} />
+              <div className={styles.formRow}>
+                <div className="form-group">
+                  <label className="form-label">Adınız Soyadınız *</label>
+                  <input className="form-input" type="text" placeholder="Ahmet Yılmaz" value={name} onChange={e => setName(e.target.value)} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Telefon</label>
+                  <input className="form-input" type="tel" placeholder="+90 5XX XXX XX XX" value={phone} onChange={e => setPhone(e.target.value)} />
+                </div>
               </div>
+
               <div className="form-group">
                 <label className="form-label">E-Posta Adresiniz</label>
-                <input className="form-input" type="email" placeholder={EMAIL} />
+                <input className="form-input" type="email" placeholder={EMAIL} value={email} onChange={e => setEmail(e.target.value)} />
               </div>
+
               <div className="form-group">
                 <label className="form-label">Konu</label>
-                <select className="form-select">
-                  <option>Yeni Proje Talebi</option>
-                  <option>Fiyat Bilgisi</option>
-                  <option>Teknik Destek</option>
-                  <option>İş Birliği</option>
-                  <option>Diğer</option>
+                <select className="form-select" value={topic} onChange={e => setTopic(e.target.value)}>
+                  {TOPICS.map(t => <option key={t}>{t}</option>)}
                 </select>
               </div>
+
               <div className="form-group">
-                <label className="form-label">Mesajınız *</label>
+                <label className="form-label">Mesajınız</label>
                 <textarea
                   className="form-textarea"
                   placeholder="Merhaba, projem hakkında bilgi almak istiyorum..."
@@ -113,10 +132,13 @@ export default function Contact() {
                   onChange={e => setMsg(e.target.value)}
                 />
               </div>
+
               <button className={`btn btn-primary ${styles.submitBtn}`} onClick={sendWA}>
                 💬 WhatsApp'tan Mesaj Gönder
               </button>
-              <p className="form-note">Genellikle 24 saat içinde yanıt veriyoruz.</p>
+              <p className="form-note">
+                Tüm form bilgileri WhatsApp mesajına otomatik eklenir. Genellikle 24 saat içinde yanıt veriyoruz.
+              </p>
             </div>
           </div>
         </div>

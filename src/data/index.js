@@ -1,6 +1,7 @@
 import tashanImg from '@/assets/tashan.png'
 import sahapanelImg from '@/assets/sahapanel.png'
 import akcelikImg from '@/assets/akcelik.png'
+import mustafaImg from '@/assets/mustafa-portfolio.png'
 
 /* ─── İLETİŞİM ─── */
 export const WA_NUMBER = '905319621482'
@@ -12,42 +13,12 @@ export const waLink = (msg = 'Merhaba, proje teklifi almak istiyorum.') =>
 
 /* ─── HİZMETLER ─── */
 export const services = [
-  {
-    icon: '🏢',
-    title: 'Kurumsal Web Sitesi',
-    desc: 'Markanızı en iyi şekilde yansıtan, güven veren ve dönüşüm odaklı kurumsal web siteleri tasarlıyoruz.',
-    tags: 'Branding • SEO • CMS',
-  },
-  {
-    icon: '🛒',
-    title: 'E-Ticaret Sitesi',
-    desc: 'Hızlı, güvenli ve satış odaklı e-ticaret platformları geliştiriyoruz. Ödeme sistemi ve stok yönetimi dahil.',
-    tags: 'Ödeme • Stok • Güvenlik',
-  },
-  {
-    icon: '⚙️',
-    title: 'Web Uygulaması',
-    desc: 'Panel, yönetim sistemi, rezervasyon ve SaaS tabanlı özel web uygulamaları geliştiriyoruz.',
-    tags: 'Full-Stack • API • DB',
-  },
-  {
-    icon: '🎨',
-    title: 'Portföy & Blog',
-    desc: 'Kendinizi veya işinizi öne çıkaran şık portföy ve blog siteleri tasarlıyoruz. Tam içerik yönetimi sunuyoruz.',
-    tags: 'CMS • Portföy • Blog',
-  },
-  {
-    icon: '📱',
-    title: 'Landing Page',
-    desc: 'Tek sayfalık, dönüşüm odaklı landing page\'ler geliştiriyoruz. Reklam kampanyalarınız için ideal.',
-    tags: 'A/B Test • Analytics • CRO',
-  },
-  {
-    icon: '🔍',
-    title: 'SEO & Performans',
-    desc: 'Mevcut sitenizi hızlandırıyor, Google sıralamanızı yükseltiyoruz ve teknik SEO optimizasyonu gerçekleştiriyoruz.',
-    tags: 'Core Web Vitals • Schema',
-  },
+  { icon: '🏢', title: 'Kurumsal Web Sitesi', desc: 'Markanızı en iyi şekilde yansıtan, güven veren ve dönüşüm odaklı kurumsal web siteleri tasarlıyoruz.', tags: 'Branding • SEO • CMS' },
+  { icon: '🛒', title: 'E-Ticaret Sitesi', desc: 'Hızlı, güvenli ve satış odaklı e-ticaret platformları geliştiriyoruz. Ödeme sistemi ve stok yönetimi dahil.', tags: 'Ödeme • Stok • Güvenlik' },
+  { icon: '⚙️', title: 'Web Uygulaması', desc: 'Panel, yönetim sistemi, rezervasyon ve SaaS tabanlı özel web uygulamaları geliştiriyoruz.', tags: 'Full-Stack • API • DB' },
+  { icon: '🎨', title: 'Portföy & Blog', desc: 'Kendinizi veya işinizi öne çıkaran şık portföy ve blog siteleri tasarlıyoruz. Tam içerik yönetimi sunuyoruz.', tags: 'CMS • Portföy • Blog' },
+  { icon: '📱', title: 'Landing Page', desc: "Tek sayfalık, dönüşüm odaklı landing page'ler geliştiriyoruz. Reklam kampanyalarınız için ideal.", tags: 'A/B Test • Analytics • CRO' },
+  { icon: '🔍', title: 'SEO & Performans', desc: 'Mevcut sitenizi hızlandırıyor, Google sıralamanızı yükseltiyoruz ve teknik SEO optimizasyonu gerçekleştiriyoruz.', tags: 'Core Web Vitals • Schema' },
 ]
 
 /* ─── PROJELER ─── */
@@ -77,6 +48,14 @@ export const projects = [
     tags: ['Kurumsal', 'İnşaat', 'Blog'],
   },
   {
+    image: mustafaImg,
+    title: 'Mustafa Yıldız – Kişisel Portföy',
+    desc: 'Software Developer & Business Analyst kimliğiyle öne çıkan kişisel portföy sitesi. Modern tipografi, koyu tema ve akıcı kullanıcı deneyimi ile tasarlandı.',
+    url: 'https://mustafayildizportfolio.netlify.app/',
+    urlLabel: 'mustafayildizportfolio.netlify.app',
+    tags: ['Portföy', 'React', 'Dark Theme'],
+  },
+  {
     image: null,
     emoji: '🌐',
     gradient: 'linear-gradient(135deg,#1a1f4e,#2d3478)',
@@ -92,7 +71,7 @@ export const projects = [
 export const testimonials = [
   {
     stars: 5,
-    text: '"Web sitemiz yenilendikten sonra kurumsal görünümümüz tamamen değişti. Taşan Lojistik olarak artık dijitalde çok daha güçlü bir imajımız var. Hızlı teslimat ve profesyonel iletişim için teşekkürler!"',
+    text: '"Web sitemiz yenilendikten sonra kurumsal görünümümüz tamamen değişti. Taşan Lojistik olarak artık dijitalde çok daha güçlü bir imajımız var. Hızlı teslimat ve profesyonel iletişim için kesinlikle tavsiye ediyoruz!"',
     name: 'Yasin Taşan',
     role: 'Kurucu – Taşan Lojistik',
     site: 'tasanakliyat.com',
@@ -101,7 +80,7 @@ export const testimonials = [
   },
   {
     stars: 5,
-    text: '"SahaPanel\'i müşterilerimizin gerçek ihtiyaçlarına göre geliştirdiler. Randevu yönetimi, kasa takibi, abonelik sistemi — hepsini eksiksiz hayata geçirdiler. Sahacıların bu araca ihtiyacı vardı!"',
+    text: '"SahaPanel\'i müşterilerimizin ihtiyaçlarına tam olarak uyacak şekilde geliştirdiler. Randevu yönetimi, kasa takibi ve abonelik sistemi — her detayı önceden düşünülmüştü. Sahacıların bu araca ihtiyacı vardı ve WebX bunu mükemmel çözüme kavuşturdu!"',
     name: 'Muhammet Can Gezgin',
     role: 'Kurucu – SahaPanel',
     site: 'sahapanel.tr',
@@ -110,7 +89,7 @@ export const testimonials = [
   },
   {
     stars: 5,
-    text: '"Akçelik Mühendislik olarak yıllardır profesyonel bir web sitesi arayışındaydık. Hem tasarımı hem içeriği çok başarılı şekilde yönettiler. Proje galerimiz artık müşterilerimize harika izlenim bırakıyor."',
+    text: '"Akçelik Mühendislik olarak yıllardır profesyonel bir web sitesi arayışındaydık. Hem tasarımı hem içeriği çok başarılı şekilde yönettiler. Proje galerimiz artık müşterilerimize harika bir izlenim bırakıyor."',
     name: 'Okan Akçelik',
     role: 'Yönetici – Akçelik Mühendislik & İnşaat',
     site: 'akcelikmuhendislikinsaat.com.tr',
@@ -128,9 +107,11 @@ export const pricingPlans = [
     desc: 'Küçük işletmeler ve girişimler için ideal başlangıç paketi.',
     support: '1 Ay',
     supportClass: 'support-1',
+    delivery: '1–2 Hafta',
     popular: false,
     btnClass: 'btn-outline',
     features: [
+      { text: 'Teslim süresi: 1–2 hafta', ok: true },
       { text: '5 sayfaya kadar web sitesi', ok: true },
       { text: 'Mobil uyumlu tasarım', ok: true },
       { text: 'İletişim formu', ok: true, tip: 'Ziyaretçilerin size doğrudan mesaj gönderebileceği form' },
@@ -139,9 +120,8 @@ export const pricingPlans = [
       { text: '1 ay teknik destek', ok: true },
       { text: 'Blog / CMS paneli', ok: false },
       { text: 'E-ticaret / ödeme sistemi', ok: false },
-      { text: 'Admin paneli', ok: false },
     ],
-    waMsg: 'Merhaba, Başlangıç paketi hakkında bilgi almak istiyorum.',
+    waMsg: 'Merhaba, Başlangıç paketi (1-2 hafta teslim) hakkında bilgi almak istiyorum.',
   },
   {
     name: 'Standart',
@@ -150,9 +130,11 @@ export const pricingPlans = [
     desc: 'Büyümek isteyen işletmeler için kapsamlı çözüm paketi.',
     support: '3 Ay',
     supportClass: 'support-3',
+    delivery: '2–3 Hafta',
     popular: true,
     btnClass: 'btn-primary',
     features: [
+      { text: 'Teslim süresi: 2–3 hafta', ok: true },
       { text: '10 sayfaya kadar web sitesi', ok: true },
       { text: 'Premium & Özel Tasarım', ok: true },
       { text: 'Blog / CMS paneli', ok: true, tip: 'Kod bilmeden içerik ekleyip düzenleyebileceğiniz yönetim paneli' },
@@ -161,9 +143,8 @@ export const pricingPlans = [
       { text: 'Hız & performans optimizasyonu', ok: true, tip: '90+ PageSpeed skoru hedefiyle optimize edilir' },
       { text: 'Google Analytics + Tag Manager', ok: true },
       { text: '3 ay teknik destek', ok: true },
-      { text: 'E-ticaret / ödeme sistemi', ok: false },
     ],
-    waMsg: 'Merhaba, Standart paket hakkında bilgi almak istiyorum.',
+    waMsg: 'Merhaba, Standart paket (2-3 hafta teslim) hakkında bilgi almak istiyorum.',
   },
   {
     name: 'Premium',
@@ -172,9 +153,11 @@ export const pricingPlans = [
     desc: 'E-ticaret, web uygulaması veya özel çözümler isteyen işletmeler için.',
     support: '6 Ay',
     supportClass: 'support-6',
+    delivery: '4+ Hafta',
     popular: false,
     btnClass: 'btn-gold',
     features: [
+      { text: 'Teslim süresi: 4+ hafta', ok: true },
       { text: 'Sınırsız sayfa', ok: true },
       { text: 'E-ticaret / Ödeme sistemi', ok: true, tip: 'Stripe, iyzico veya PayTR entegrasyonu ile güvenli ödeme altyapısı' },
       { text: 'Admin & yönetim paneli', ok: true, tip: 'Siparişler, kullanıcılar ve içerikleri yönetebileceğiniz özel panel' },
@@ -182,45 +165,26 @@ export const pricingPlans = [
       { text: 'Çok dil desteği', ok: true, tip: 'TR/EN ve daha fazla dil için tam çeviri altyapısı' },
       { text: 'Gelişmiş SEO stratejisi', ok: true },
       { text: 'A/B test & CRO danışmanlığı', ok: true, tip: 'Hangi tasarımın daha fazla müşteri kazandırdığını test ederiz' },
-      { text: 'Üye sistemi', ok: true, tip: 'Kayıt, giriş, profil yönetimi ve rol bazlı erişim kontrolü' },
       { text: '6 ay teknik destek', ok: true },
     ],
-    waMsg: 'Merhaba, Premium paket hakkında bilgi almak istiyorum.',
+    waMsg: 'Merhaba, Premium paket (4+ hafta teslim) hakkında bilgi almak istiyorum.',
   },
 ]
 
 /* ─── SSS ─── */
 export const faqs = [
-  {
-    q: 'Proje teslim süresi ne kadar?',
-    a: 'Projenin kapsamına göre değişmekle birlikte, Başlangıç paketi genellikle 2-3 hafta, Standart paket 3-5 hafta, Premium paket ise 5-10 hafta içinde teslim edilmektedir. Hızlı ve Ekspres teslim seçeneklerimiz de mevcuttur.',
-  },
-  {
-    q: 'Ödeme nasıl yapılıyor?',
-    a: 'Genellikle %50 başlangıç, %50 teslimatta ödeme modeli uyguluyoruz. Büyük projeler için %30-%40-%30 taksitli ödeme planı da oluşturabiliyoruz. Havale/EFT ve kredi kartı kabul edilmektedir.',
-  },
-  {
-    q: 'Siteyi teslim aldıktan sonra kendim içerik ekleyebilir miyim?',
-    a: 'Evet! Standart ve Premium paketlerde sitenize özel CMS kuruyoruz. Teknik bilgiye ihtiyaç duymadan yazı, görsel ve sayfa ekleyebiliyorsunuz. Ayrıca kullanım eğitimi de veriyoruz.',
-  },
-  {
-    q: 'Mevcut web sitemizi yenileyebilir misiniz?',
-    a: 'Evet, mevcut sitenizi sıfırdan yeniden tasarlayabilir ya da görsel ve teknik güncellemeler yapabiliriz. Önce sitenizi inceleyip size en uygun yolu öneriyoruz.',
-  },
-  {
-    q: 'Hosting ve domain hizmetleri sunuyor musunuz?',
-    a: 'Doğrudan hosting/domain satışı yapmıyoruz; ancak ihtiyacınıza uygun hizmetleri tavsiye ediyor, kurulum ve yönlendirme süreçlerinde yardımcı oluyoruz.',
-  },
-  {
-    q: 'Destek süresi bittikten sonra ne olur?',
-    a: 'Destek süreniz bittikten sonra aylık bakım paketleri ile hizmet almaya devam edebilirsiniz. Tek seferlik güncelleme veya teknik destek talepleri için uygun fiyatlı seçeneklerimiz mevcuttur.',
-  },
+  { q: 'Proje teslim süresi ne kadar?', a: 'Başlangıç paketi 1-2 hafta, Standart paket 2-3 hafta, Premium paket ise 4 hafta ve üzeri sürmektedir. Proje başlangıcında net bir takvim paylaşıyoruz.' },
+  { q: 'Ödeme nasıl yapılıyor?', a: 'Genellikle %50 başlangıç, %50 teslimatta ödeme modeli uyguluyoruz. Büyük projeler için %30-%40-%30 taksitli ödeme planı da oluşturabiliyoruz. Havale/EFT ve kredi kartı kabul edilmektedir.' },
+  { q: 'Siteyi teslim aldıktan sonra kendim içerik ekleyebilir miyim?', a: 'Evet! Standart ve Premium paketlerde sitenize özel CMS kuruyoruz. Teknik bilgiye ihtiyaç duymadan yazı, görsel ve sayfa ekleyebiliyorsunuz. Ayrıca kullanım eğitimi de veriyoruz.' },
+  { q: 'Mevcut web sitemizi yenileyebilir misiniz?', a: 'Evet, mevcut sitenizi sıfırdan yeniden tasarlayabilir ya da görsel ve teknik güncellemeler yapabiliriz. Önce sitenizi inceleyip size en uygun yolu öneriyoruz.' },
+  { q: 'SEO ve otomasyon hizmetleriniz var mı?', a: 'Evet! Hem teknik/yerel SEO hem de WhatsApp otomasyonu, form-CRM entegrasyonu ve müşteri takip sistemleri konularında kapsamlı hizmet sunuyoruz.' },
+  { q: 'Destek süresi bittikten sonra ne olur?', a: 'Destek süreniz bittikten sonra aylık bakım paketleri ile hizmet almaya devam edebilirsiniz. Tek seferlik güncelleme veya teknik destek talepleri için uygun fiyatlı seçeneklerimiz mevcuttur.' },
 ]
 
 /* ─── SÜREÇ ─── */
 export const processSteps = [
   { num: '01', title: 'Keşif & Analiz', desc: 'İhtiyaçlarınızı, hedef kitlenizi ve rekabeti analiz ediyoruz. İlk görüşme tamamen ücretsizdir.' },
-  { num: '02', title: 'Tasarım', desc: 'Figma\'da özel tasarım oluşturuyor, onayınızı alıyoruz. Şablon kullanmıyoruz.' },
+  { num: '02', title: 'Tasarım', desc: "Figma'da özel tasarım oluşturuyor, onayınızı alıyoruz. Şablon kullanmıyoruz." },
   { num: '03', title: 'Geliştirme', desc: 'Temiz, hızlı ve ölçeklenebilir kod yazıyoruz. İlerlemeyi düzenli paylaşıyoruz.' },
   { num: '04', title: 'Test & Lansman', desc: 'Kapsamlı test sonrası sitenizi yayına alıyoruz. SEO ve hız optimizasyonu yapıyoruz.' },
   { num: '05', title: 'Destek', desc: 'Paketinize göre 1, 3 veya 6 ay teknik destek ve bakım hizmeti sunuyoruz.' },

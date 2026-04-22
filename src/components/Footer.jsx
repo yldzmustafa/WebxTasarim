@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { EMAIL, PHONE_DISPLAY, waLink } from '@/data'
+import { EMAIL, PHONE_DISPLAY } from '@/data'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -35,17 +35,17 @@ export default function Footer() {
             <Link to="/teklif">Kurumsal Web</Link>
             <Link to="/teklif">E-Ticaret</Link>
             <Link to="/teklif">Web Uygulaması</Link>
-            <Link to="/teklif">Landing Page</Link>
-            <Link to="/teklif">SEO & Performans</Link>
+            <Link to="/seo-hizmetleri">🔍 SEO Hizmetleri</Link>
+            <Link to="/otomasyon">⚡ Otomasyon</Link>
           </div>
 
           <div className={styles.col}>
             <h5>İletişim</h5>
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-            <a href={waLink()} target="_blank" rel="noreferrer">{PHONE_DISPLAY}</a>
+            <a href={`https://wa.me/905319621482`} target="_blank" rel="noreferrer">{PHONE_DISPLAY}</a>
             <span>İstanbul, Türkiye</span>
             <a
-              href={waLink('Merhaba, proje teklifi almak istiyorum.')}
+              href={`https://wa.me/905319621482?text=${encodeURIComponent('Merhaba, proje teklifi almak istiyorum.')}`}
               target="_blank"
               rel="noreferrer"
               className={`btn btn-primary ${styles.footerCta}`}

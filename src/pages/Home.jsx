@@ -84,7 +84,7 @@ function Hero() {
 }
 
 /* ── MARQUEE ── */
-const ITEMS = ['Next.js', 'React', 'Vite', 'Tailwind CSS', 'Node.js', 'E-Ticaret', 'Web Uygulaması', 'Kurumsal Web']
+const ITEMS = ['Kurumsal Web','E-Ticaret', 'Web Uygulaması', 'SEO & Dijital Görünürlük', 'Mobil Uyum & Responsive','Kullanıcı Deneyimi (UI/UX)', 'Hız Optimizasyonu' ]
 function Marquee() {
   const doubled = [...ITEMS, ...ITEMS]
   return (

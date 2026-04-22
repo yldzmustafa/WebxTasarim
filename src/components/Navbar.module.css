@@ -1,153 +1,57 @@
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 0 5%;
-  transition: var(--transition);
-}
-.scrolled {
-  background: rgba(6, 8, 16, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-}
-.inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 72px;
-}
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 5%; transition: var(--transition); }
+.scrolled { background: rgba(6,8,16,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+.inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 
-/* LOGO */
-.logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+.logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; color: var(--text); display: flex; align-items: center; gap: 8px; }
 .logo span { color: var(--accent); }
-.logoIcon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, var(--accent), var(--accent3));
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-weight: 800;
-  color: #fff;
-}
+.logoIcon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--accent), var(--accent3)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; color: #fff; }
 
-/* NAV */
-.navLinks {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.navLink {
-  color: var(--text2);
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: var(--transition);
-  padding: 6px 14px;
-  border-radius: 8px;
-}
-.navLink:hover,
-.active {
-  color: var(--text);
-  background: var(--surface);
-}
-.navCta {
-  background: var(--accent);
-  color: #fff;
-  padding: 10px 22px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-left: 8px;
-  transition: var(--transition);
-}
+.navLinks { display: flex; align-items: center; gap: 4px; }
+.navLink { color: var(--text2); font-size: 0.9rem; font-weight: 500; transition: var(--transition); padding: 6px 14px; border-radius: 8px; cursor: pointer; user-select: none; }
+.navLink:hover, .active { color: var(--text); background: var(--surface); }
+.navCta { background: var(--accent); color: #fff; padding: 10px 22px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; margin-left: 8px; transition: var(--transition); }
 .navCta:hover { background: var(--accent2); transform: translateY(-1px); color: #fff; }
 
-/* HAMBURGER */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
+/* DROPDOWN */
+.dropWrap { position: relative; }
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   padding: 8px;
+  min-width: 200px;
+  box-shadow: var(--shadow2);
+  z-index: 100;
 }
-.hamburger span {
+.dropItem {
   display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--text);
-  border-radius: 2px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text2);
   transition: var(--transition);
+  white-space: nowrap;
 }
+.dropItem:hover, .dropItem.active { background: rgba(91,110,245,0.12); color: var(--accent); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 8px; cursor: pointer; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
 .open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .open span:nth-child(2) { opacity: 0; }
 .open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* MOBILE MENU */
-.mobileMenu {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: var(--bg);
-  z-index: 999;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-}
+.mobileMenu { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
 .mobileOpen { display: flex; }
-.mobileClose {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  transition: var(--transition);
-}
+.mobileClose { position: absolute; top: 24px; right: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; color: var(--text); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: var(--transition); cursor: pointer; }
 .mobileClose:hover { border-color: var(--accent); color: var(--accent); }
-.mobileLink {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text);
-  transition: var(--transition);
-}
+.mobileLink { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--text); transition: var(--transition); }
 .mobileLink:hover { color: var(--accent); }
-.mobileCta {
-  background: #25d366;
-  color: #fff;
-  padding: 14px 32px;
-  border-radius: 14px;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: var(--transition);
-}
+.mobileCta { background: #25d366; color: #fff; padding: 14px 32px; border-radius: 14px; font-weight: 700; font-size: 1rem; transition: var(--transition); margin-top: 8px; }
 .mobileCta:hover { transform: translateY(-2px); }
 
-@media (max-width: 768px) {
-  .navLinks { display: none; }
-  .hamburger { display: flex; }
-}
+@media (max-width: 900px) { .navLinks { display: none; } .hamburger { display: flex; } }

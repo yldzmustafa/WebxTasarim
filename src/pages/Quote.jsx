@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { PHONE_DISPLAY, EMAIL, waLink } from '@/data'
+import { PHONE_DISPLAY, EMAIL } from '@/data'
 import styles from './Quote.module.css'
 
 const SITE_TYPES = [
@@ -17,9 +17,9 @@ const PAGE_COUNTS = [
   { label: '20+ Sayfa (+₺10.000)', value: 10000 },
 ]
 const DELIVERY = [
-  { label: 'Normal (3-6 hafta)', value: 0 },
-  { label: 'Hızlı (1-2 hafta, +₺3.000)', value: 3000 },
-  { label: 'Ekspres (<1 hafta, +₺6.000)', value: 6000 },
+  { label: 'Normal (pakete göre standart süre)', value: 0 },
+  { label: 'Hızlı teslimat (+₺3.000)', value: 3000 },
+  { label: 'Ekspres teslimat (+₺6.000)', value: 6000 },
 ]
 const EXTRAS = [
   { id: 'f1', label: 'Blog / CMS', desc: 'Kod bilmeden içerik ekleyip düzenleyebileceğiniz panel', value: 2500 },
@@ -39,6 +39,8 @@ export default function Quote() {
   const [extras, setExtras] = useState({})
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [company, setCompany] = useState('')
   const [detail, setDetail] = useState('')
 
   const toggleExtra = (id, value) =>
@@ -54,16 +56,33 @@ export default function Quote() {
     : null
 
   const sendToWA = () => {
+    if (!siteType) { alert('Lütfen site türünü seçiniz.'); return }
+    if (!name.trim()) { alert('Lütfen adınızı giriniz.'); return }
+
     const siteName = SITE_TYPES.find(s => s.value === parseInt(siteType))?.label || ''
-    const extraNames = EXTRAS.filter(f => extras[f.id]).map(f => f.label).join(', ')
-    let msg = 'Merhaba WebX Tasarım,\n\nProje teklifi almak istiyorum.\n'
-    if (name) msg += `\nAd: ${name}`
-    if (phone) msg += `\nTelefon: ${phone}`
-    if (siteName) msg += `\nSite Türü: ${siteName}`
-    if (extraNames) msg += `\nEk Özellikler: ${extraNames}`
-    if (priceLabel) msg += `\nTahmini Bütçe: ${priceLabel}`
-    if (detail) msg += `\n\nDetaylar:\n${detail}`
-    window.open(`https://wa.me/905319621482?text=${encodeURIComponent(msg)}`, '_blank')
+    const pageLabel = PAGE_COUNTS.find(p => p.value === pageCount)?.label || ''
+    const delivLabel = DELIVERY.find(d => d.value === delivery)?.label || ''
+    const selectedExtras = EXTRAS.filter(f => extras[f.id]).map(f => `${f.label} (+₺${f.value.toLocaleString('tr-TR')})`).join(', ')
+
+    const lines = [
+      '🌐 *WebX Tasarım – Proje Teklifi*',
+      '',
+      `👤 *Ad Soyad:* ${name}`,
+      phone ? `📞 *Telefon:* ${phone}` : '',
+      email ? `📧 *E-Posta:* ${email}` : '',
+      company ? `🏢 *Şirket/Kurum:* ${company}` : '',
+      '',
+      '📋 *Proje Detayları*',
+      `• Site Türü: ${siteName}`,
+      `• Sayfa Sayısı: ${pageLabel}`,
+      `• Teslim Süresi: ${delivLabel}`,
+      selectedExtras ? `• Ek Özellikler: ${selectedExtras}` : '',
+      '',
+      priceLabel ? `💰 *Tahmini Bütçe:* ${priceLabel}` : '',
+      detail ? `\n📝 *Ek Notlar:*\n${detail}` : '',
+    ].filter(Boolean).join('\n')
+
+    window.open(`https://wa.me/905319621482?text=${encodeURIComponent(lines)}`, '_blank')
   }
 
   return (
@@ -76,11 +95,11 @@ export default function Quote() {
             <span className="text-accent">Tahmini Fiyat</span> Hesaplayın
           </h2>
           <p className="section-sub">
-            Seçimlerinize göre anlık fiyat tahmini alın. Kesin fiyat görüşme sonrası belirlenir.
+            Seçimlerinize göre anlık fiyat tahmini alın. Formu doldurun, WhatsApp'tan anında iletişime geçelim.
           </p>
 
           <div className={styles.wrapper}>
-            {/* LEFT */}
+            {/* LEFT INFO */}
             <div className={styles.info}>
               <h3>Neden WebX Tasarım?</h3>
               <p>Projenizi anlatın, gereksinimlerinizi seçin ve anında bir fiyat tahmini alın. 24 saat içinde size geri dönüyoruz.</p>
@@ -101,7 +120,7 @@ export default function Quote() {
               <div className={styles.contactBox}>
                 <div className={styles.contactRow}>
                   <span className={styles.contactLabel}>📞 Telefon / WhatsApp</span>
-                  <a href={waLink()} target="_blank" rel="noreferrer" className={styles.contactVal}>{PHONE_DISPLAY}</a>
+                  <a href={`https://wa.me/905319621482`} target="_blank" rel="noreferrer" className={styles.contactVal}>{PHONE_DISPLAY}</a>
                 </div>
                 <div className={styles.contactRow}>
                   <span className={styles.contactLabel}>📧 E-Posta</span>
@@ -109,7 +128,7 @@ export default function Quote() {
                 </div>
               </div>
               <a
-                href={waLink('Merhaba, proje teklifi almak istiyorum.')}
+                href={`https://wa.me/905319621482?text=${encodeURIComponent('Merhaba, proje teklifi almak istiyorum.')}`}
                 target="_blank"
                 rel="noreferrer"
                 className={`btn btn-primary ${styles.waBtn}`}
@@ -120,56 +139,86 @@ export default function Quote() {
 
             {/* RIGHT FORM */}
             <div className={styles.formBox}>
-              <div className="form-group">
-                <label className="form-label">Web Sitesi Türü *</label>
-                <select className="form-select" value={siteType} onChange={e => setSiteType(e.target.value)}>
-                  <option value="">Seçiniz...</option>
-                  {SITE_TYPES.map(s => (
-                    <option key={s.label} value={s.value}>
-                      {s.label} (+₺{s.value.toLocaleString('tr-TR')})
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label className="form-label">Sayfa Sayısı</label>
-                <select className="form-select" value={pageCount} onChange={e => setPageCount(+e.target.value)}>
-                  {PAGE_COUNTS.map(p => <option key={p.label} value={p.value}>{p.label}</option>)}
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label className="form-label">
-                  Ek Özellikler
-                  <span className={styles.hint}> – üzerine gelin, açıklama görün</span>
-                </label>
-                <div className={styles.extrasGrid}>
-                  {EXTRAS.map(f => (
-                    <label
-                      key={f.id}
-                      className={`${styles.extraItem} ${extras[f.id] ? styles.checked : ''}`}
-                      title={f.desc}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={!!extras[f.id]}
-                        onChange={() => toggleExtra(f.id, f.value)}
-                      />
-                      <span className={styles.extraLabel}>{f.label}</span>
-                      <span className={styles.extraPrice}>+₺{f.value.toLocaleString('tr-TR')}</span>
-                    </label>
-                  ))}
+              {/* KİŞİSEL BİLGİLER */}
+              <div className={styles.formSection}>
+                <div className={styles.formSectionTitle}>👤 Kişisel Bilgiler</div>
+                <div className={styles.formRow}>
+                  <div className="form-group" style={{ flex: 1 }}>
+                    <label className="form-label">Adınız Soyadınız *</label>
+                    <input className="form-input" type="text" placeholder="Ahmet Yılmaz" value={name} onChange={e => setName(e.target.value)} />
+                  </div>
+                  <div className="form-group" style={{ flex: 1 }}>
+                    <label className="form-label">Telefon *</label>
+                    <input className="form-input" type="tel" placeholder="+90 5XX XXX XX XX" value={phone} onChange={e => setPhone(e.target.value)} />
+                  </div>
+                </div>
+                <div className={styles.formRow}>
+                  <div className="form-group" style={{ flex: 1 }}>
+                    <label className="form-label">E-Posta</label>
+                    <input className="form-input" type="email" placeholder="ahmet@sirket.com" value={email} onChange={e => setEmail(e.target.value)} />
+                  </div>
+                  <div className="form-group" style={{ flex: 1 }}>
+                    <label className="form-label">Şirket / Kurum</label>
+                    <input className="form-input" type="text" placeholder="Şirket adı (isteğe bağlı)" value={company} onChange={e => setCompany(e.target.value)} />
+                  </div>
                 </div>
               </div>
 
-              <div className="form-group">
-                <label className="form-label">Teslim Süresi</label>
-                <select className="form-select" value={delivery} onChange={e => setDelivery(+e.target.value)}>
-                  {DELIVERY.map(d => <option key={d.label} value={d.value}>{d.label}</option>)}
-                </select>
+              {/* PROJE DETAYLARI */}
+              <div className={styles.formSection}>
+                <div className={styles.formSectionTitle}>📋 Proje Detayları</div>
+                <div className="form-group">
+                  <label className="form-label">Web Sitesi Türü *</label>
+                  <select className="form-select" value={siteType} onChange={e => setSiteType(e.target.value)}>
+                    <option value="">Seçiniz...</option>
+                    {SITE_TYPES.map(s => (
+                      <option key={s.label} value={s.value}>
+                        {s.label} (+₺{s.value.toLocaleString('tr-TR')})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Sayfa Sayısı</label>
+                  <select className="form-select" value={pageCount} onChange={e => setPageCount(+e.target.value)}>
+                    {PAGE_COUNTS.map(p => <option key={p.label} value={p.value}>{p.label}</option>)}
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">
+                    Ek Özellikler
+                    <span className={styles.hint}> — üzerine gelin, açıklama görün</span>
+                  </label>
+                  <div className={styles.extrasGrid}>
+                    {EXTRAS.map(f => (
+                      <label
+                        key={f.id}
+                        className={`${styles.extraItem} ${extras[f.id] ? styles.checked : ''}`}
+                        title={f.desc}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={!!extras[f.id]}
+                          onChange={() => toggleExtra(f.id, f.value)}
+                        />
+                        <span className={styles.extraLabel}>{f.label}</span>
+                        <span className={styles.extraPrice}>+₺{f.value.toLocaleString('tr-TR')}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Teslim Süresi</label>
+                  <select className="form-select" value={delivery} onChange={e => setDelivery(+e.target.value)}>
+                    {DELIVERY.map(d => <option key={d.label} value={d.value}>{d.label}</option>)}
+                  </select>
+                </div>
               </div>
 
+              {/* TAHMİNİ FİYAT */}
               <div className={styles.priceDisplay}>
                 <small>Tahmini Fiyat Aralığı</small>
                 <div className={styles.priceAmount}>
@@ -179,22 +228,21 @@ export default function Quote() {
               </div>
 
               <div className="form-group">
-                <label className="form-label">Adınız Soyadınız *</label>
-                <input className="form-input" type="text" placeholder="Ahmet Yılmaz" value={name} onChange={e => setName(e.target.value)} />
-              </div>
-              <div className="form-group">
-                <label className="form-label">Telefon</label>
-                <input className="form-input" type="tel" placeholder={PHONE_DISPLAY} value={phone} onChange={e => setPhone(e.target.value)} />
-              </div>
-              <div className="form-group">
-                <label className="form-label">Proje Detayları</label>
-                <textarea className="form-textarea" placeholder="Projeniz hakkında kısa bilgi verin..." value={detail} onChange={e => setDetail(e.target.value)} />
+                <label className="form-label">Proje Detayları & Notlar</label>
+                <textarea
+                  className="form-textarea"
+                  placeholder="Projeniz hakkında kısa bilgi verin. Referans site, özel istekler, hedef kitle vb..."
+                  value={detail}
+                  onChange={e => setDetail(e.target.value)}
+                />
               </div>
 
               <button className={`btn btn-primary ${styles.submitBtn}`} onClick={sendToWA}>
                 💬 WhatsApp'tan Teklif Gönder
               </button>
-              <p className="form-note">Formu doldurduktan sonra sizi WhatsApp'a yönlendiriyoruz.</p>
+              <p className="form-note">
+                Formu doldurduktan sonra WhatsApp'a yönlendiriliyorsunuz. Tüm bilgileriniz mesaja otomatik eklenir.
+              </p>
             </div>
           </div>
         </div>
