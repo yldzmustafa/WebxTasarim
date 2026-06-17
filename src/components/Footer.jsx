@@ -13,12 +13,12 @@ export default function Footer() {
               WebX<span>Tasarım</span>
             </Link>
             <p>Web sitesi, web uygulaması ve e-ticaret alanında modern, hızlı ve dönüşüm odaklı dijital çözümler üretiyoruz.</p>
-            <div className={styles.socials}>
+            {/* <div className={styles.socials}>
               <a href="#!" className="social-link" aria-label="LinkedIn">💼</a>
               <a href="#!" className="social-link" aria-label="Instagram">📷</a>
               <a href="#!" className="social-link" aria-label="Twitter">🐦</a>
               <a href="#!" className="social-link" aria-label="GitHub">🐱</a>
-            </div>
+            </div> */}
           </div>
 
           <div className={styles.col}>

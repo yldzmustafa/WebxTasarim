@@ -89,13 +89,13 @@ export default function Contact() {
                 💬 WhatsApp'tan Mesaj Gönder
               </a>
 
-              <div className={styles.socials}>
+              {/* <div className={styles.socials}>
                 <a href="#!" className="social-link" aria-label="LinkedIn">💼</a>
                 <a href="#!" className="social-link" aria-label="Instagram">📷</a>
                 <a href="#!" className="social-link" aria-label="Twitter">🐦</a>
                 <a href="#!" className="social-link" aria-label="GitHub">🐱</a>
                 <a href="#!" className="social-link" aria-label="Behance">🎨</a>
-              </div>
+              </div> */}
             </div>
 
             {/* RIGHT FORM */}
