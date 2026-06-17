@@ -3,6 +3,7 @@ import sahapanelImg from '@/assets/sahapanel.png'
 import akcelikImg from '@/assets/akcelik.png'
 import mustafaImg from '@/assets/mustafa-portfolio.png'
 import webxImg from '@/assets/webx-portfolio.png'
+import cicekImg from '@/assets/sanatcicekcilik.png'
 
 /* ─── İLETİŞİM ─── */
 export const WA_NUMBER = '905319621482'
@@ -55,6 +56,14 @@ export const projects = [
     url: 'https://mustafayildizportfolio.netlify.app/',
     urlLabel: 'mustafayildizportfolio.netlify.app',
     tags: ['Portföy', 'React', 'Dark Theme'],
+  },
+  {
+    image: cicekImg,
+    title: 'Sanat Çiçekçilik – WhatsApp Sipariş Sistemi',
+    desc: "Esenyurt / Avcılar'a özel çiçekçi web sitesi. Premium koyu altın tasarım, ürün kataloğu ve WhatsApp entegrasyonuyla anlık sipariş altyapısı kuruldu.",
+    url: 'https://sanatcicekcilik.com.tr',
+    urlLabel: 'sanatcicekcilik.com.tr',
+    tags: ['E-Ticaret', 'WhatsApp', 'Landing Page'],
   },
   {
     image: webxImg,
