@@ -1,0 +1,183 @@
+/* ── BREADCRUMB ── */
+.breadcrumb {
+  padding: 100px 0 0;
+  font-size: 0.82rem;
+  color: var(--text3);
+}
+.breadcrumb a { color: var(--text3); transition: var(--transition); }
+.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb span:last-child { color: var(--text2); }
+
+/* ── MAKALE ── */
+.article { padding: 32px 0 72px; }
+.inner { max-width: 780px; margin: 0 auto; }
+
+/* ── BAŞLIK ── */
+.header { margin-bottom: 48px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  background: rgba(91,110,245,0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+.dot { color: var(--text3); }
+.date, .readTime { font-size: 0.82rem; color: var(--text3); }
+.title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+.excerpt {
+  font-size: 1.05rem;
+  color: var(--text2);
+  line-height: 1.75;
+  margin-bottom: 22px;
+}
+.tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text3);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* ── İÇERİK ── */
+.content { margin-bottom: 60px; }
+.content .h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 40px 0 16px;
+  color: var(--text);
+  padding-top: 8px;
+}
+.content .h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 28px 0 12px;
+  color: var(--text);
+}
+.content .p {
+  font-size: 0.97rem;
+  color: var(--text2);
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+.content .ul {
+  margin: 4px 0 22px 0;
+  padding-left: 0;
+  list-style: none;
+}
+.content .ul li {
+  font-size: 0.95rem;
+  color: var(--text2);
+  line-height: 1.75;
+  padding: 8px 0 8px 24px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+.content .ul li:last-child { border-bottom: none; }
+.content .ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ── CTA ── */
+.cta {
+  background: linear-gradient(135deg, rgba(91,110,245,0.12), rgba(61,82,224,0.06));
+  border: 1px solid rgba(91,110,245,0.2);
+  border-radius: var(--radius2);
+  padding: 44px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.cta h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.cta p {
+  color: var(--text2);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ctaActions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+/* ── İLGİLİ YAZILAR ── */
+.relatedSection { background: var(--bg2); border-top: 1px solid var(--border); }
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+.relatedCard {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 24px;
+  transition: var(--transition);
+}
+.relatedCard:hover {
+  border-color: rgba(91,110,245,0.35);
+  transform: translateY(-3px);
+}
+.relatedCat {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: block;
+}
+.relatedCard h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  color: var(--text);
+}
+.relatedCard p {
+  font-size: 0.82rem;
+  color: var(--text2);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 14px;
+}
+.relatedLink {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ── RESPONSİVE ── */
+@media (max-width: 768px) {
+  .cta { padding: 28px 20px; }
+  .relatedGrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .title { font-size: 1.6rem; }
+}

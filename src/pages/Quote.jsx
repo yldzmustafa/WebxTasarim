@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { PHONE_DISPLAY, EMAIL } from '@/data'
 import styles from './Quote.module.css'
 
@@ -87,6 +88,13 @@ export default function Quote() {
 
   return (
     <div className="page-wrapper">
+      <Helmet>
+        <title>Teklif Al – WebX Tasarım</title>
+        <meta name="description" content="WebX Tasarım'dan ücretsiz web sitesi teklifi alın. Projeniz için en uygun paketi birlikte belirleyelim." />
+        <link rel="canonical" href="https://webxtasarim.com/teklif" />
+        <meta property="og:url" content="https://webxtasarim.com/teklif" />
+        <meta property="og:title" content="Teklif Al – WebX Tasarım" />
+      </Helmet>
       <section className={`section-pad ${styles.section}`}>
         <div className="container">
           <div className="section-label">Teklif Al</div>

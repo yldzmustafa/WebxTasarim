@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import FadeUp from '@/components/FadeUp'
 import { projects, waLink } from '@/data'
 import styles from './Projects.module.css'
@@ -5,6 +6,13 @@ import styles from './Projects.module.css'
 export default function Projects() {
   return (
     <div className="page-wrapper">
+      <Helmet>
+        <title>Projeler – WebX Tasarım Portföy</title>
+        <meta name="description" content="WebX Tasarım tarafından tamamlanan web sitesi, e-ticaret ve web uygulaması projelerini keşfedin." />
+        <link rel="canonical" href="https://webxtasarim.com/projeler" />
+        <meta property="og:url" content="https://webxtasarim.com/projeler" />
+        <meta property="og:title" content="Projeler – WebX Tasarım Portföy" />
+      </Helmet>
       <section className="section-pad">
         <div className="container">
           <div className="section-label">Portföy</div>

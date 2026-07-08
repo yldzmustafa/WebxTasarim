@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import FadeUp from '@/components/FadeUp'
 import { pricingPlans, waLink } from '@/data'
 import styles from './Pricing.module.css'
@@ -21,6 +22,13 @@ function Tooltip({ text, children }) {
 export default function Pricing() {
   return (
     <div className="page-wrapper">
+      <Helmet>
+        <title>Fiyatlar – WebX Tasarım Web Geliştirme Paketleri</title>
+        <meta name="description" content="WebX Tasarım web sitesi, e-ticaret ve web uygulaması fiyat paketleri. Uygun fiyatlarla profesyonel web çözümleri." />
+        <link rel="canonical" href="https://webxtasarim.com/fiyatlar" />
+        <meta property="og:url" content="https://webxtasarim.com/fiyatlar" />
+        <meta property="og:title" content="Fiyatlar – WebX Tasarım Web Geliştirme Paketleri" />
+      </Helmet>
       <section className="section-pad">
         <div className="container">
           <div className="text-center">

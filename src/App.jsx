@@ -12,6 +12,8 @@ import Quote from '@/pages/Quote'
 import Contact from '@/pages/Contact'
 import SeoServices from '@/pages/SeoServices'
 import Automation from '@/pages/Automation'
+import Blog from '@/pages/Blog'
+import BlogPost from '@/pages/BlogPost'
 import NotFound from '@/pages/NotFound'
 
 function ScrollToTop() {
@@ -35,6 +37,8 @@ export default function App() {
           <Route path="/iletisim" element={<Contact />} />
           <Route path="/seo-hizmetleri" element={<SeoServices />} />
           <Route path="/otomasyon" element={<Automation />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           {/* 404 - Tüm eşleşmeyen rotalar */}
           <Route path="*" element={<NotFound />} />
         </Routes>

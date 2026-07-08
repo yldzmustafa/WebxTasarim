@@ -4,6 +4,7 @@ import akcelikImg from '@/assets/akcelik.png'
 import mustafaImg from '@/assets/mustafa-portfolio.png'
 import webxImg from '@/assets/webx-portfolio.png'
 import cicekImg from '@/assets/sanatcicekcilik.png'
+import gulduragiImg from '@/assets/gulduragi.png'
 
 /* ─── İLETİŞİM ─── */
 export const WA_NUMBER = '905319621482'
@@ -64,6 +65,14 @@ export const projects = [
     url: 'https://sanatcicekcilik.com.tr',
     urlLabel: 'sanatcicekcilik.com.tr',
     tags: ['E-Ticaret', 'WhatsApp', 'Landing Page'],
+  },
+  {
+    image: gulduragiImg,
+    title: 'Gül Durağı – Çiçekçi Web Sitesi',
+    desc: 'Ümraniye merkezli çiçekçi işletmesi için tasarladığımız şık web sitesi. Ürün kataloğu, kategori sayfaları, blog ve WhatsApp sipariş entegrasyonu ile aynı gün teslimat altyapısı.',
+    url: 'https://gulduragi.com.tr',
+    urlLabel: 'gulduragi.com.tr',
+    tags: ['E-Ticaret', 'WhatsApp', 'Çiçekçi'],
   },
   {
     image: webxImg,
@@ -187,6 +196,7 @@ export const faqs = [
   { q: 'Mevcut web sitemizi yenileyebilir misiniz?', a: 'Evet, mevcut sitenizi sıfırdan yeniden tasarlayabilir ya da görsel ve teknik güncellemeler yapabiliriz. Önce sitenizi inceleyip size en uygun yolu öneriyoruz.' },
   { q: 'SEO ve otomasyon hizmetleriniz var mı?', a: 'Evet! Hem teknik/yerel SEO hem de WhatsApp otomasyonu, form-CRM entegrasyonu ve müşteri takip sistemleri konularında kapsamlı hizmet sunuyoruz.' },
   { q: 'Destek süresi bittikten sonra ne olur?', a: 'Destek süreniz bittikten sonra aylık bakım paketleri ile hizmet almaya devam edebilirsiniz. Tek seferlik güncelleme veya teknik destek talepleri için uygun fiyatlı seçeneklerimiz mevcuttur.' },
+  { q: 'Hangi şehirlere hizmet veriyorsunuz?', a: 'Türkiye\'nin her şehrine uzaktan hizmet veriyoruz. İstanbul, Ankara, İzmir, Bursa, Antalya ve diğer tüm şehirlerdeki işletmeler için web sitesi, web uygulaması ve e-ticaret çözümleri geliştiriyoruz. Proje yönetimi tamamen uzaktan yürütülebilmektedir.' },
 ]
 
 /* ─── SÜREÇ ─── */

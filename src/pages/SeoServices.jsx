@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import FadeUp from '@/components/FadeUp'
 import { waLink } from '@/data'
 import styles from './SeoServices.module.css'
@@ -75,6 +76,14 @@ const faqs = [
 export default function SeoServices() {
   return (
     <div className="page-wrapper">
+      <Helmet>
+        <title>SEO Hizmetleri İstanbul & Ümraniye – WebX Tasarım</title>
+        <meta name="description" content="İstanbul ve Ümraniye'de yerel SEO, teknik SEO ve içerik SEO hizmetleri. Google'da Ümraniye, Kadıköy, Ataşehir ve tüm İstanbul ilçelerinde üst sıralara çıkmak için WebX Tasarım'ı tercih edin." />
+        <meta name="keywords" content="ümraniye seo, istanbul seo hizmetleri, yerel seo istanbul, seo ajansı ümraniye, google seo istanbul" />
+        <link rel="canonical" href="https://webxtasarim.com/seo-hizmetleri" />
+        <meta property="og:url" content="https://webxtasarim.com/seo-hizmetleri" />
+        <meta property="og:title" content="SEO Hizmetleri İstanbul & Ümraniye – WebX Tasarım" />
+      </Helmet>
       {/* HERO */}
       <section className={styles.hero}>
         <div className="container">

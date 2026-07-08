@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import FadeUp from '@/components/FadeUp'
 import {
   services, projects, testimonials,
   processSteps, trustStats, faqs, waLink
 } from '@/data'
+import { getRecentPosts } from '@/data/blog'
 import styles from './Home.module.css'
 
 /* ── HERO ── */
@@ -27,9 +29,9 @@ function Hero() {
               <span className="text-accent">Web Siteleri</span> İnşa Ediyoruz
             </h1>
             <p className={styles.heroDesc}>
-              Web sitesi, web uygulaması ve e-ticaret alanında işletmenizi dijitalde öne çıkaran,
-              hızlı, mobil uyumlu ve müşteri kazandıran çözümler geliştiriyoruz.
-              Her proje hedeflerinize göre özel olarak oluşturuluyor.
+              İstanbul Ümraniye merkezli ekibimizle web sitesi, web uygulaması ve e-ticaret
+              alanında işletmenizi dijitalde öne çıkaran, hızlı, mobil uyumlu ve müşteri
+              kazandıran çözümler geliştiriyoruz. Her proje hedeflerinize göre özel oluşturuluyor.
             </p>
             <div className={styles.heroActions}>
               <a
@@ -179,7 +181,14 @@ function WhyUs() {
 }
 
 /* ── FEATURED PROJECTS ── */
+const FEATURED_URLS = [
+  'https://gulduragi.com.tr',
+  'https://sahapanel.tr',
+  'https://tasanakliyat.com',
+  'https://akcelikmuhendislikinsaat.com.tr',
+]
 function FeaturedProjects() {
+  const featured = projects.filter(p => FEATURED_URLS.includes(p.url))
   return (
     <section className="section-pad">
       <div className="container">
@@ -192,7 +201,7 @@ function FeaturedProjects() {
           <Link to="/projeler" className="btn btn-outline">Tüm Projeler →</Link>
         </div>
         <div className={styles.projGrid}>
-          {projects.map((p, i) => (
+          {featured.map((p, i) => (
             <FadeUp key={i} delay={(i % 2) + 1}>
               <div className={styles.projCard}>
                 <div className={styles.projImg}>
@@ -216,6 +225,9 @@ function FeaturedProjects() {
               </div>
             </FadeUp>
           ))}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: 40 }}>
+          <Link to="/projeler" className="btn btn-outline">Daha Fazla Proje Gör →</Link>
         </div>
       </div>
     </section>
@@ -340,6 +352,107 @@ function FAQ() {
   )
 }
 
+/* ── BLOG PREVIEW ── */
+function formatDateShort(dateStr) {
+  const months = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara']
+  const d = new Date(dateStr)
+  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`
+}
+function BlogPreview() {
+  const posts = getRecentPosts(3)
+  return (
+    <section className="section-pad">
+      <div className="container">
+        <div className={styles.projHeader}>
+          <div>
+            <div className="section-label">Blog</div>
+            <h2 className="section-title">Faydalı <span className="text-accent">Rehber Yazıları</span></h2>
+            <p className="section-sub">Web tasarım, SEO ve dijital pazarlama hakkında işletmenize özel içerikler.</p>
+          </div>
+          <Link to="/blog" className="btn btn-outline">Tüm Yazılar →</Link>
+        </div>
+        <div className={styles.blogGrid}>
+          {posts.map((post, i) => (
+            <FadeUp key={post.slug} delay={i + 1}>
+              <Link to={`/blog/${post.slug}`} className={styles.blogCard}>
+                <span className={styles.blogCat}>{post.category}</span>
+                <h3 className={styles.blogTitle}>{post.title}</h3>
+                <p className={styles.blogExcerpt}>{post.excerpt}</p>
+                <div className={styles.blogMeta}>
+                  <span>{formatDateShort(post.date)}</span>
+                  <span>{post.readTime} okuma</span>
+                </div>
+              </Link>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── SERVICE AREAS ── */
+const ISTANBUL_DISTRICTS = [
+  { name: 'Ümraniye', primary: true },
+  { name: 'Kadıköy', primary: false },
+  { name: 'Üsküdar', primary: false },
+  { name: 'Ataşehir', primary: false },
+  { name: 'Maltepe', primary: false },
+  { name: 'Kartal', primary: false },
+  { name: 'Pendik', primary: false },
+  { name: 'Tuzla', primary: false },
+  { name: 'Sancaktepe', primary: false },
+  { name: 'Sultanbeyli', primary: false },
+  { name: 'Çekmeköy', primary: false },
+  { name: 'Beykoz', primary: false },
+  { name: 'Beşiktaş', primary: false },
+  { name: 'Şişli', primary: false },
+  { name: 'Beyoğlu', primary: false },
+  { name: 'Fatih', primary: false },
+  { name: 'Bakırköy', primary: false },
+  { name: 'Bağcılar', primary: false },
+  { name: 'Bahçelievler', primary: false },
+  { name: 'Küçükçekmece', primary: false },
+  { name: 'Avcılar', primary: false },
+  { name: 'Esenyurt', primary: false },
+  { name: 'Beylikdüzü', primary: false },
+  { name: 'Başakşehir', primary: false },
+  { name: 'Gaziosmanpaşa', primary: false },
+  { name: 'Eyüpsultan', primary: false },
+  { name: 'Sarıyer', primary: false },
+  { name: 'Güngören', primary: false },
+]
+function ServiceAreas() {
+  return (
+    <section className={`section-pad ${styles.areasSection}`}>
+      <div className="container">
+        <div className="text-center">
+          <div className="section-label" style={{ margin: '0 auto 20px' }}>Hizmet Bölgelerimiz</div>
+          <h2 className="section-title">
+            İstanbul'un Her İlçesine<br />
+            <span className="text-accent">Web Tasarım Hizmeti</span>
+          </h2>
+          <p className="section-sub" style={{ margin: '14px auto 0' }}>
+            <strong>Ümraniye</strong> merkezli ekibimizle Kadıköy'den Beşiktaş'a,
+            Ataşehir'den Bakırköy'e İstanbul'un tüm ilçelerinde web sitesi tasarımı,
+            web sitesi yaptırma ve e-ticaret çözümleri sunuyoruz.
+          </p>
+        </div>
+        <div className={styles.areasGrid}>
+          {ISTANBUL_DISTRICTS.map((d, i) => (
+            <div key={i} className={`${styles.areaChip} ${d.primary ? styles.areaChipPrimary : ''}`}>
+              📍 {d.name}
+            </div>
+          ))}
+        </div>
+        <p className={styles.areasNote}>
+          Listelenen ilçeler dışında tüm İstanbul ve Türkiye geneline web sitesi, web uygulaması ve e-ticaret hizmeti veriyoruz.
+        </p>
+      </div>
+    </section>
+  )
+}
+
 /* ── CTA ── */
 function CTA() {
   return (
@@ -372,6 +485,15 @@ function CTA() {
 export default function Home() {
   return (
     <>
+      <Helmet>
+        <title>Ümraniye Web Tasarım & Web Sitesi Yaptırma | WebX Tasarım – İstanbul</title>
+        <meta name="description" content="Ümraniye ve İstanbul genelinde profesyonel web sitesi tasarımı, web sitesi yaptırma, e-ticaret ve web uygulaması geliştirme hizmeti. Kadıköy, Üsküdar, Ataşehir ve tüm İstanbul ilçelerine hizmet. Ücretsiz teklif alın." />
+        <meta name="keywords" content="ümraniye web tasarım, ümraniye web sitesi, ümraniye web sitesi yaptırma, istanbul web tasarım, istanbul web sitesi, web sitesi tasarımı, web sitesi yaptırma, kadıköy web tasarım, ataşehir web tasarım, üsküdar web tasarım" />
+        <link rel="canonical" href="https://webxtasarim.com/" />
+        <meta property="og:url" content="https://webxtasarim.com/" />
+        <meta property="og:title" content="Ümraniye Web Tasarım & Web Sitesi Yaptırma | WebX Tasarım" />
+        <meta property="og:description" content="Ümraniye ve İstanbul genelinde web sitesi tasarımı, e-ticaret ve web uygulaması geliştirme." />
+      </Helmet>
       <Hero />
       <Marquee />
       <Services />
@@ -379,6 +501,8 @@ export default function Home() {
       <FeaturedProjects />
       <Process />
       <Testimonials />
+      <BlogPreview />
+      <ServiceAreas />
       <FAQ />
       <CTA />
     </>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { PHONE_DISPLAY, EMAIL } from '@/data'
 import styles from './Contact.module.css'
 
@@ -29,6 +30,13 @@ export default function Contact() {
 
   return (
     <div className="page-wrapper">
+      <Helmet>
+        <title>İletişim – WebX Tasarım</title>
+        <meta name="description" content="WebX Tasarım ile iletişime geçin. Proje talepleriniz, fiyat bilgisi ve destek için bize ulaşın." />
+        <link rel="canonical" href="https://webxtasarim.com/iletisim" />
+        <meta property="og:url" content="https://webxtasarim.com/iletisim" />
+        <meta property="og:title" content="İletişim – WebX Tasarım" />
+      </Helmet>
       <section className="section-pad">
         <div className="container">
           <div className="section-label">İletişim</div>

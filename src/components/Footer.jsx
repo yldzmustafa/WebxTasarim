@@ -27,6 +27,7 @@ export default function Footer() {
             <Link to="/hakkimizda">Hakkımızda</Link>
             <Link to="/projeler">Projeler</Link>
             <Link to="/fiyatlar">Fiyatlar</Link>
+            <Link to="/blog">Blog</Link>
             <Link to="/iletisim">İletişim</Link>
           </div>
 

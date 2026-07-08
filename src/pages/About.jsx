@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import FadeUp from '@/components/FadeUp'
 import { skills, waLink } from '@/data'
 import styles from './About.module.css'
@@ -14,6 +15,14 @@ const approach = [
 export default function About() {
   return (
     <div className="page-wrapper">
+      <Helmet>
+        <title>Hakkımızda – Ümraniye Web Tasarım Ajansı | WebX Tasarım</title>
+        <meta name="description" content="İstanbul Ümraniye merkezli WebX Tasarım ekibini tanıyın. 5+ yıllık deneyimle Ümraniye, Kadıköy, Ataşehir ve tüm İstanbul ilçelerinde web sitesi tasarımı ve dijital çözümler." />
+        <meta name="keywords" content="ümraniye web tasarım ajansı, istanbul web tasarım, web geliştirme istanbul, ümraniye web geliştirme" />
+        <link rel="canonical" href="https://webxtasarim.com/hakkimizda" />
+        <meta property="og:url" content="https://webxtasarim.com/hakkimizda" />
+        <meta property="og:title" content="Hakkımızda – Ümraniye Web Tasarım Ajansı | WebX Tasarım" />
+      </Helmet>
       <section className="section-pad">
         <div className="container">
           <div className={styles.grid}>
@@ -31,9 +40,10 @@ export default function About() {
                 Biz Kimiz? <span className="text-accent">WebX Tasarım</span>
               </h2>
               <p className={styles.intro}>
-                İstanbul merkezli, 5+ yıllık deneyime sahip bir web geliştirme ve UI/UX tasarım
-                ekibiyiz. Web sitesi, web uygulaması ve e-ticaret alanında işletmelere dijital
-                dünyada güçlü bir kimlik kazandırmak için çalışıyoruz.
+                İstanbul Ümraniye merkezli, 5+ yıllık deneyime sahip bir web geliştirme ve UI/UX
+                tasarım ekibiyiz. Ümraniye, Kadıköy, Ataşehir ve tüm İstanbul ilçelerinde web
+                sitesi, web uygulaması ve e-ticaret alanında işletmelere güçlü bir dijital kimlik
+                kazandırıyoruz.
               </p>
               <p className={styles.body}>
                 Yazılım geliştirme kariyerimizi tasarım tutkusuyla birleştirerek tam kapsamlı dijital

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import FadeUp from '@/components/FadeUp'
 import { waLink } from '@/data'
 import styles from './Automation.module.css'
@@ -83,6 +84,13 @@ const faqs = [
 export default function Automation() {
   return (
     <div className="page-wrapper">
+      <Helmet>
+        <title>Otomasyon Hizmetleri – WebX Tasarım</title>
+        <meta name="description" content="İş süreçlerinizi otomatize edin. WebX Tasarım chatbot, CRM entegrasyonu ve iş akışı otomasyon çözümleriyle verimliliğinizi artırın." />
+        <link rel="canonical" href="https://webxtasarim.com/otomasyon" />
+        <meta property="og:url" content="https://webxtasarim.com/otomasyon" />
+        <meta property="og:title" content="Otomasyon Hizmetleri – WebX Tasarım" />
+      </Helmet>
       {/* HERO */}
       <section className={styles.hero}>
         <div className="container">
